@@ -4602,7 +4602,7 @@ fi
 
 LIBS="$LIBS -ldb"
 if test "$cross_compiling" = yes; then
-  db_ok_version=no
+  db_ok_version=yes
 else
   cat >conftest.$ac_ext <<_ACEOF
 
@@ -4671,7 +4671,7 @@ if test $db_ok_version = no; then
 fi
 
 if test "$cross_compiling" = yes; then
-  db_ok_version=no
+  db_ok_version=yes
 else
   cat >conftest.$ac_ext <<_ACEOF
 
@@ -4741,7 +4741,7 @@ if test $db_ok_version = no; then
 fi
 
 if test "$cross_compiling" = yes; then
-  dbg2_ok_version=no
+  dbg2_ok_version=yes
 else
   cat >conftest.$ac_ext <<_ACEOF
 
