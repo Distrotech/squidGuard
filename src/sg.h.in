@@ -114,7 +114,7 @@ int tolower();
 #define REDIRECT_PERMANENT   "301:"
 #define REDIRECT_TEMPORARILY "302:"
 
-char *progname;
+extern char *progname;
 
 struct LogFileStat {
   char *name;
@@ -307,7 +307,7 @@ struct AclDest {
   struct AclDest *next;
 };
 
-int lineno;
+extern int lineno;
 
 char   *sgParseRedirect	__P((char *, struct SquidInfo *, struct Acl *, struct AclDest *));
 char   *sgAclAccess __P((struct Source *, struct Acl *, struct SquidInfo *));

@@ -66,7 +66,8 @@ int sig_hup = 0;
 int sig_alrm = 0;
 int sgtime = 0;
 char *globalLogDir = NULL;
-
+int lineno;
+char *progname;
 
 #if __STDC__
 int main(int    argc,

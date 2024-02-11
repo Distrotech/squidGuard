@@ -32,7 +32,7 @@ extern int globalDebug;
 
 #include "sgEx.h"
 
-FILE *yyin, *yyout;
+extern FILE *yyin, *yyout;
 char *configFile;
 
 int numTimeElements;
