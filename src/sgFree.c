@@ -118,7 +118,9 @@ void sgFreeSource(struct Source *src)
 void sgFreeSource(src) struct Source *src;
 #endif
 {
+#ifdef HAVE_LIBLDAP
        int i;
+#endif
 
        if (src->name != NULL)
               sgFree(src->name);

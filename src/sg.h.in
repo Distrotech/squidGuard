@@ -151,6 +151,8 @@ struct UserInfo {
 #endif
 };
 
+struct UserInfo *setuserinfo();
+
 struct UserQuota {
   time_t seconds;
   int renew;

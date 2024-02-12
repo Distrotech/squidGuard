@@ -160,7 +160,7 @@ struct SquidInfo *s;
                 p[ndx + sz] = '\0';
                 if (1 == report_once)
                 {
-                    sgLogError("Warning: Possible bypass attempt. Found multiple slashes where only one is expected: %s", s->orig);
+                     sgLogError("Warning: Possible bypass attempt. Found multiple slashes where only one is expected: %s", s->orig); 
                     report_once--;
                 }
             }
@@ -173,7 +173,7 @@ struct SquidInfo *s;
                 size_t sz = strlen(p + ndx + 1);
                 strncpy(p + ndx, p + ndx + 1, sz);
                 p[ndx + sz] = '\0';
-                sgLogError("Warning: Possible bypass attempt. Found a trailing dot in the domain name: %s", s->orig);
+                 sgLogError("Warning: Possible bypass attempt. Found a trailing dot in the domain name: %s", s->orig);
             }
             else
             {
@@ -948,7 +948,5 @@ struct UserInfo *setuserinfo()
     uq.found = 0;
     uq.cachetime = 0;
 #endif
-    struct UserInfo *p = &uq;
-    char *c = (char *)&uq;
-    return p;
+    return &uq;
 }
