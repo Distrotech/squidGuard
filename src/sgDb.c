@@ -3,7 +3,7 @@
   agreements:
   
   This software product, squidGuard, is copyrighted (C) 1998 by
-  ElTele Øst AS, Oslo, Norway, with all rights reserved.
+  ElTele ï¿½st AS, Oslo, Norway, with all rights reserved.
   With December 27th 2006 all rights moved to Christine Kronberg,
   Shalla Secure Services.
   
@@ -114,7 +114,7 @@ void sgDbInit(Db, file)
     }
   }
 #endif
-#if DB_VERSION_MAJOR == 4
+#if DB_VERSION_MAJOR == 4 || DB_VERSION_MAJOR == 5
   if(globalUpdate || createdb || (dbfile != NULL && stat(dbfile,&st))){
     flag = DB_CREATE;
     if(createdb)
