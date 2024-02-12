@@ -18,6 +18,7 @@
 
 #include "sg.h"
 #include "sgEx.h"
+#include "HTEscape.h"
 
 /* #define METEST 8; */
 
@@ -881,6 +882,8 @@ struct UserInfo *setuserinfo()
   uq.found = 0;
   uq.cachetime = 0;
 #endif
-  return &uq;
+  struct UserInfo *p = &uq;
+  char *c = (char *)&uq;
+  return p;
 }
 
