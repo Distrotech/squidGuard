@@ -156,7 +156,7 @@ struct SquidInfo *s;
             if ('/' == p[ndx] && '/' == p[ndx + 1])
             {
                 size_t sz = strlen(p + ndx + 1);
-                strncpy(p + ndx, p + ndx + 1, sz);
+                strcpy(p + ndx, p + ndx + 1);
                 p[ndx + sz] = '\0';
                 if (1 == report_once)
                 {
@@ -171,7 +171,7 @@ struct SquidInfo *s;
                 /* We do this only the first time it is encountered. */
                 trailingdot++;
                 size_t sz = strlen(p + ndx + 1);
-                strncpy(p + ndx, p + ndx + 1, sz);
+                strcpy(p + ndx, p + ndx + 1);
                 p[ndx + sz] = '\0';
                  sgLogError("Warning: Possible bypass attempt. Found a trailing dot in the domain name: %s", s->orig);
             }
