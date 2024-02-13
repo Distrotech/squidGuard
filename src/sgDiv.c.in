@@ -750,7 +750,11 @@ struct AclDest *aclpass;
                 if (defined(s->userDb, req->ident, (char **)&userquota) == 1)
                 {
                     char qbuf[150];
+#if defined __X86_64__ || defined __LP64__ || defined _WIN64
+                    sprintf(qbuf, "%d-%ld-%d-%ld-%ld-%d", s->userquota.renew, s->userquota.seconds, userquota->status, userquota->time, userquota->last, userquota->consumed);
+#else                    
                     sprintf(qbuf, "%d-%d-%d-%d-%d-%d", s->userquota.renew, s->userquota.seconds, userquota->status, userquota->time, userquota->last, userquota->consumed);
+#endif
                     strcat(buf, qbuf);
                 }
                 else

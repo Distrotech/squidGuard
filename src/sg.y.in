@@ -1035,7 +1035,6 @@ struct Source *sgFindSource (bsrc, net, ident, domain)
 	  founduser = 1;
 	  unblockeduser = 1;
 	  if(s->userquota.seconds != 0){
-            struct UserInfo uq;
 	    time_t t = time(NULL) + globalDebugTimeDelta;
 	    //sgLogError("status %d time %d lasttime %d consumed %d", userquota->status, userquota->time, userquota->last, userquota->consumed);
 	    //sgLogError("renew %d seconds %d", s->userquota.renew, s->userquota.seconds);
@@ -1997,10 +1996,10 @@ void sgTimeSetAcl()
     if(d->time != NULL){
       d->active = d->time->active;
       if(d->within == OUTSIDE){
-	if(d->active){
-	  d->active = 0;
-	} else {
-	  d->active = 1;
+	    if(d->active){
+	      d->active = 0;
+	    } else {
+	      d->active = 1;
         }
       }
     }
@@ -2009,11 +2008,11 @@ void sgTimeSetAcl()
     if(s->time != NULL){
       s->active = s->time->active;
       if(s->within == OUTSIDE){
-	if(s->active){
-	  s->active = 0;
+	    if(s->active){
+	      s->active = 0;
         }
-	else  {
-	  s->active = 1;
+	    else  {
+	      s->active = 1;
         }
       }
     }
@@ -2021,11 +2020,12 @@ void sgTimeSetAcl()
   for(rew = Rewrite; rew != NULL; rew = rew->next){
     if(rew->time != NULL){
       rew->active = rew->time->active;
-      if(rew->within == OUTSIDE)
-	if(rew->active)
-	  rew->active = 0;
-	else
-	  rew->active = 1;
+      if(rew->within == OUTSIDE){
+	    if(rew->active)
+	       rew->active = 0;
+	     else
+	       rew->active = 1;
+      }
     }
   }
 }
@@ -2529,12 +2529,14 @@ int sgFindUser(src, ident, rval)
 #endif
 
 {
-       int i, found;
+       struct UserInfo *userinfo;
+       int found;
+#ifdef HAVE_LIBLDAP
+       int i;
        int CacheTimeOut;
        char *interval;
-       struct UserInfo *userinfo;
        static struct UserInfo info;
-
+#endif
        /* defined in the userDB? */
        if(defined(src->userDb, ident, (char **) &userinfo) == 1) {
 #ifdef HAVE_LIBLDAP
